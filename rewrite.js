@@ -5,7 +5,6 @@ function rewriter(req, res, next) {
         if (item.callback.rewriteTarget) {
         	req.urlRewritten = req.url;
             req.url = req.url.replace(item.regexp, item.callback.rewriteTarget);
-            D&&D(req.url);
         }
     });
     next();
