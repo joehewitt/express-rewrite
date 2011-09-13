@@ -2,10 +2,12 @@
 function rewriter(req, res, next) {
     var result = req.app.match(req.url);
     result.forEach(function(item) {
-        if (item.callback.rewriteTarget) {
-        	req.urlRewritten = req.url;
-            req.url = req.url.replace(item.regexp, item.callback.rewriteTarget);
-        }
+        item.callbacks.forEach(function(callback) {
+            if (callback && callback.rewriteTarget) {
+                req.urlRewritten = req.url;
+                req.url = req.url.replace(item.regexp, callback.rewriteTarget);
+            }
+        });
     });
     next();
 }
