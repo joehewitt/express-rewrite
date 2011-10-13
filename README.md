@@ -8,6 +8,7 @@ Usage
 
 You must install the express-rewrite middleware before any other middleware. Repeat: the first time you call server.use(), you must call it on express-rewrite.  This is because it modifies the value of req.url, and you want that to happen before any other middleware looks at the request.
 
+```javascript
 	var rewriter = require('express-rewrite');
 
 	var server = express.createServer();
@@ -15,19 +16,26 @@ You must install the express-rewrite middleware before any other middleware. Rep
         server.use(rewriter);
 		server.use(server.router);
 	});
+```
 
 To rewrite a URL, you use the usual Express routing functions, but with a call to rewriter.rewrite() as the callback.
 
+```javascript
 	server.get('/from/some/url', rewriter.rewrite('/to/another/url'));
+```
 
 You can replace parts of the rewritten URL with matched groups from the original URL. This works the same way as string.replace() when called with a regular expression. Actually, it is a call to string.replace() using the regular expression compiled by the Express router.
 
+```javascript
 	server.get('/post/:year/:month', rewriter.rewrite('/post?year=$1&month=$2'));
+```
 
 Installation
 ------------
 
+```bash
     $ npm install express-rewrite
+```
 
 License 
 -------
