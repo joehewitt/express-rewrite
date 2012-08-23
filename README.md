@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/joehewitt/express-rewrite.png)](http://travis-ci.org/joehewitt/express-rewrite)
 express-rewrite
 ===============
 
