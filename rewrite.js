@@ -1,17 +1,17 @@
 
 function rewriter(req, res, next) {
-    var result = req.app.match(req.url);
-    result.forEach(function(item) {
+    req.app.routes.get.forEach(function (item, index) {
+      if (item.match(req.url)){
         item.callbacks.forEach(function(callback) {
             if (callback && callback.rewriteTarget) {
                 req.urlRewritten = req.url;
                 req.url = req.url.replace(item.regexp, callback.rewriteTarget);
             }
         });
+      }
     });
     next();
 }
-
 rewriter.rewrite = function(target) {
     var handler = function(req, res, next) {
         // This route should never ever be handler because it will be
