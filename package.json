@@ -1,15 +1,19 @@
 {
   "name": "express-rewrite",
   "description": "URL rewriting middleware for Express.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "http://github.com/joehewitt/express-rewrite",
   "repository": {
-      "type": "git",
-      "url" : "http://github.com/joehewitt/express-rewrite.git"
+    "type": "git",
+    "url": "http://github.com/joehewitt/express-rewrite.git"
   },
-  "keywords": ["express"],
+  "keywords": [
+    "express"
+  ],
   "author": "Joe Hewitt <joe@joehewitt.com>",
   "dependencies": {},
-  "engines": { "node": ">=0.4.0" },
+  "engines": {
+    "node": ">=0.4.0"
+  },
   "main": "./rewrite"
 }
