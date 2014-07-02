@@ -1,11 +1,14 @@
+var url = require('url');
 
 function rewriter(req, res, next) {
-    var result = req.app.match(req.url);
+    var requrl = url.parse(req.url);
+    var result = req.app.match(requrl.pathname);
     result.forEach(function(item) {
         item.callbacks.forEach(function(callback) {
             if (callback && callback.rewriteTarget) {
                 req.urlRewritten = req.url;
-                req.url = req.url.replace(item.regexp, callback.rewriteTarget);
+                requrl.pathname = requrl.pathname.replace(item.regexp, callback.rewriteTarget);
+                req.url = url.format(requrl);
             }
         });
     });
